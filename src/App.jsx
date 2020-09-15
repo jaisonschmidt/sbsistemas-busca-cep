@@ -1,22 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Header from "./components/Header";
 import CepSearch from "./components/CepSearch";
 import CepPanel from "./components/CepPanel";
 
-const cep = {
-  cep: "99052-360",
-  logradouro: "Rua Joana Marques",
-  bairro: "São José",
-  localidade: "Passo Fundo",
-  uf: "RS",
-};
-
 const App = () => {
+  let [cep, setCep] = useState({
+    cep: "",
+    logradouro: "",
+    bairro: "",
+    localidade: "",
+    uf: "",
+  });
+
   return (
     <>
       <Header title="Busca CEP" />
-      <CepSearch />
+      <CepSearch setCep={setCep} />
       <CepPanel {...cep} />
     </>
   );
